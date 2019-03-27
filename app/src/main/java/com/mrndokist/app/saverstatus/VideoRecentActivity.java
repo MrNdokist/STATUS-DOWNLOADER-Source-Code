@@ -3,16 +3,22 @@ package com.mrndokist.app.saverstatus;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.eftimoff.viewpagertransformers.FlipHorizontalTransformer;
@@ -56,6 +62,7 @@ public class VideoRecentActivity extends AppCompatActivity {
         }
         this.e = Environment.getExternalStorageDirectory().toString() + DIRECTORY_TO_SAVE_MEDIA_NOW;
         this.c = Integer.valueOf(getIntent().getIntExtra("Position", 0));
+
         this.a = new ViewPagerAdepterForVideo(getBaseContext(), this.f);
         this.b = (ViewPager) findViewById(R.id.pagerV);
         this.b.setPageTransformer(true, new FlipHorizontalTransformer());
@@ -78,9 +85,17 @@ public class VideoRecentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 c = Integer.valueOf(b.getCurrentItem());
-                uriForFile = Uri.fromFile(f.get(c.intValue()).getAbsoluteFile());
+                Uri uriForFile;
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    uriForFile = FileProvider.getUriForFile(VideoRecentActivity.this, BuildConfig.APPLICATION_ID + ".provider", new File(String.valueOf(f.get(c.intValue()))));
+                    Log.v("Lien du fichier", "LINK URI 24 " + uriForFile);
+                } else
+                    uriForFile = Uri.fromFile(f.get(c.intValue()).getAbsoluteFile());
+                Log.v("Test uri", "LINK URIFILE 23" + uriForFile);
+
                 final String str = (String) uriForFile.toString();
-                if (str.contains(".mp4") || str.contains(".3gp") ||str.contains(".gif") ) {
+                if (str.contains(".mp4") || str.contains(".3gp") || str.contains(".gif")) {
                     Intent intent = new Intent();
                     intent.setAction("android.intent.action.VIEW");
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -111,7 +126,7 @@ public class VideoRecentActivity extends AppCompatActivity {
 
             finish();
 
-            //Repost to whatsapp
+            //Repost
         } else if (itemId == R.id.repost) {
             this.c = Integer.valueOf(this.b.getCurrentItem());
             uriForFile = Uri.fromFile(this.f.get(this.c.intValue()).getAbsoluteFile());

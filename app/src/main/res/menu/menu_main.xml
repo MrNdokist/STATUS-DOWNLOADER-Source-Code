@@ -1,15 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.mrndokist.app.saverstatus.ShorcutsActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <item
-        android:id="@+id/action_whatsapp"
-        android:orderInCategory="101"
-        android:title="WHATSAPP"
-        android:icon="@drawable/ic_whatshot"
-        android:iconTint="@color/white"
-        app:showAsAction="always|collapseActionView" />
 
     <item
         android:id="@+id/action_share"

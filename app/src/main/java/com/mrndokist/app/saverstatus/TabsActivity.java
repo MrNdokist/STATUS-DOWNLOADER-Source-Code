@@ -76,6 +76,15 @@ public class TabsActivity extends BaseActivity {
 
 
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startNewActivity(getApplicationContext(), "com.whatsapp");
+            }
+        });
+
+
         //SHORTCUT ICON DESKTOP
         if (!getSharedPreferences("APP_PREFERENCE", Activity.MODE_PRIVATE).getBoolean("IS_ICON_CREATED", false)) {
             createShortCut(); //Add shortcut on Home screen
@@ -151,13 +160,6 @@ public class TabsActivity extends BaseActivity {
         if (id == R.id.action_settings) {
             aboutDialog();
             return true;
-        }
-
-
-        if (id == R.id.action_whatsapp) {
-            startNewActivity(getApplicationContext(), "com.whatsapp");
-            return true;
-            //Repost to whatsapp
         }
 
         if (id == R.id.action_help) {

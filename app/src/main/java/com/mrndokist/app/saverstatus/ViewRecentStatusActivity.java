@@ -98,7 +98,7 @@ public class ViewRecentStatusActivity extends AppCompatActivity {
 
             finish();
 
-            //Repost to whatsapp
+            //Repost
         }else if (itemId == R.id.repost) {
             this.c = Integer.valueOf(this.b.getCurrentItem());
             uriForFile = Uri.fromFile(this.f.get(this.c.intValue()).getAbsoluteFile());

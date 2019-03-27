@@ -19,8 +19,8 @@
 
         <ImageView
             n1:id="@+id/isVideo"
-            n1:layout_width="50dp"
-            n1:layout_height="50dp"
+            n1:layout_width="80dp"
+            n1:layout_height="80dp"
             n1:layout_centerInParent="true"
             n1:src="@drawable/selecter"
             n1:visibility="gone" />

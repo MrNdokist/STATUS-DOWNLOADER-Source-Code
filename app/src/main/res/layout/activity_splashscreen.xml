@@ -26,5 +26,5 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@color/colorPrimary"
         android:layout_marginTop="5dp"
-        android:text="WHATSAPP STATUS SAVER" />
+        android:text="STATUS DOWNLOADER" />
 </RelativeLayout>

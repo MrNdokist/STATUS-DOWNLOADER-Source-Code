@@ -60,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_middle"
-                    android:text="STATUS SAVER"
+                    android:text="STATUS DOWNLOADER"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@color/grey_90"
                     android:textStyle="bold" />
